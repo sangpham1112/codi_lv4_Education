@@ -53,12 +53,11 @@ const Courses = () => {
                         alt={item.name}
                       />
                       <div className="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                        <Link
-                          to={"/loai-khoa-hoc/" + item.category_id}
-                          className="flex-shrink-0 btn btn-sm btn-primary px-4 fs-5"
+                        <span
+                          className="flex-shrink-0 bg-primary text-white px-4 fs-5"
                           style={{ borderRadius: "30px 30px" }}>
                           {item.grade}
-                        </Link>
+                        </span>
                       </div>
                     </div>
                     <div className="text-center p-4 pb-0">
