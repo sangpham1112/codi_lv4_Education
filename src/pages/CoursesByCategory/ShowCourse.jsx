@@ -8,9 +8,11 @@ import CourseDetail from "./components/CourseDetail";
 import BackButton from "../../components/BackButton";
 import { getScheduleByCourse } from "../../api/Schedules";
 import SchedulesCourse from "./components/SchedulesCourse";
+import { useSelector } from "react-redux";
 
 const ShowCourse = () => {
   const { id } = useParams();
+  const { user } = useSelector((state) => state.user);
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["courses", id],
     queryFn: () => getCourse(id),
@@ -55,7 +57,11 @@ const ShowCourse = () => {
           {isLoadingSchedule && <Loading />}
           {isErrorSchedule && <span>{errorSchedule.message}</span>}
           {schedules?.length > 0 ? (
-            <SchedulesCourse schedules={schedules} price={course?.price} />
+            <SchedulesCourse
+              schedules={schedules}
+              price={course?.price}
+              user={user}
+            />
           ) : (
             <span className="fw-bold">Hiện chưa có giảng viên</span>
           )}

@@ -15,7 +15,7 @@ const ShowTeacher = () => {
   });
 
   const teacher = data?.user;
-  console.log(teacher);
+  // console.log(teacher);
 
   if (isLoading) {
     return <Loading />;

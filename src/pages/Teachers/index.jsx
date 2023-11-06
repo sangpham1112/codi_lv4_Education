@@ -6,18 +6,25 @@ import { useQuery } from "@tanstack/react-query";
 import BackButton from "../../components/BackButton";
 import Pagination from "../../components/Pagination";
 import usePaginate from "../../hooks/usePaginate";
+import { useEffect, useState } from "react";
 
 const Teachers = () => {
+  const [teachers, setTeachers] = useState([]);
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["teachers"],
     queryFn: getTeachers,
   });
-  const teachers = data?.teachers;
+  //filter teachers avaiable
+  useEffect(() => {
+    const avaiableTeachers = data?.teachers.filter(
+      (teacher) => teacher.user.status == 1
+    );
+    setTeachers(avaiableTeachers);
+  }, [data]);
 
   const { setCurrentPage, currentDataList, pageNumbers, currentPage } =
     usePaginate(teachers);
 
-  // console.log(pageNumbers);
   return (
     <div className="container">
       <BackButton />

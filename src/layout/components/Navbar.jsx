@@ -71,7 +71,7 @@ const Navbar = () => {
                 <i className="fa fa-user ms-3"></i>
               </Link>
               <ul
-                class="dropdown-menu dropdown-menu-light"
+                className="dropdown-menu dropdown-menu-light"
                 style={{ cursor: "pointer" }}>
                 <li>
                   <span

@@ -3,8 +3,13 @@ import { ImageLink } from "../../../utils/ImageLink";
 import ModalBuyConfirm from "./ModalBuyConfirm";
 import formatPrice from "../../../utils/FormatPrice";
 
-const SchedulesCourse = ({ schedules, price }) => {
+const SchedulesCourse = ({ schedules, price, user }) => {
   const [selectedScheduleId, setSelectedScheduleId] = useState(0);
+
+  const isStudentInClass = (studentsInClass) => {
+    const ids = studentsInClass.map((item) => Number(item.user_id));
+    return ids.includes(user?.id);
+  };
 
   return (
     <>
@@ -35,8 +40,11 @@ const SchedulesCourse = ({ schedules, price }) => {
                         onClick={() => setSelectedScheduleId(item.id)}
                         className="btn btn-success"
                         data-bs-toggle="modal"
+                        disabled={isStudentInClass(item.schedule_students)}
                         data-bs-target="#ModalBuyConfirm">
-                        Mua ngay
+                        {isStudentInClass(item.schedule_students)
+                          ? "Đã mua"
+                          : "Mua ngay"}
                       </button>
                     </div>
                   </div>

@@ -11,7 +11,7 @@ const ModalBuyConfirm = ({ selectedScheduleId }) => {
         schedule_id: selectedScheduleId,
       };
       await buyCourse(data);
-      console.log(user.id, selectedScheduleId);
+      // console.log(user.id, selectedScheduleId);
       alert("Bạn đã mua thành công");
     } else {
       alert("Bạn phải đăng nhập để mua !");

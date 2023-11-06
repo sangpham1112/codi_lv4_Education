@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Title from "../../../components/Title";
 import { useQuery } from "@tanstack/react-query";
 import { getCourses } from "../../../api/Courses";
@@ -28,7 +27,7 @@ const Courses = () => {
             desc="Các Lớp Học Online Tại Marathon Education"
           />
           <Carousel
-            className="row g-4 justify-content-center"
+            className="row g-1"
             spaceBetween={30}
             slidesPerView={4}
             modules={[Pagination, Autoplay]}
@@ -36,6 +35,20 @@ const Courses = () => {
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,
+            }}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                height: 270,
+              },
+              768: {
+                slidesPerView: 2,
+                height: 270,
+              },
+              1024: {
+                slidesPerView: 4,
+                height: 270,
+              },
             }}
             data={courses}>
             {(item) => {

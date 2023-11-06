@@ -6,13 +6,21 @@ import { ImageLink } from "../../../utils/ImageLink";
 import Carousel from "../../../components/Carousel";
 import { Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Instructors = () => {
+  const [teachers, setTeachers] = useState([]);
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["teachers"],
     queryFn: getTeachers,
   });
-  const teachers = data?.teachers;
+  //filter teachers avaiable
+  useEffect(() => {
+    const avaiableTeachers = data?.teachers.filter(
+      (teacher) => teacher.user.status == 1
+    );
+    setTeachers(avaiableTeachers);
+  }, [data]);
 
   return (
     <>

@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 const TabNavigate = ({ allGrade }) => {
   const location = useLocation();
   const grade = decodeURIComponent(location.search.split("=")[1]);
-  console.log(grade);
+  // console.log(grade);
 
   return (
     <ul className="nav nav-pills d-flex justify-content-center">
