@@ -9,9 +9,9 @@ const ModalBuyConfirm = ({ selectedScheduleId }) => {
       const data = {
         user_id: user.id,
         schedule_id: selectedScheduleId,
+        email: user.email,
       };
       await buyCourse(data);
-      // console.log(user.id, selectedScheduleId);
       alert("Bạn đã mua thành công");
     } else {
       alert("Bạn phải đăng nhập để mua !");
@@ -46,6 +46,7 @@ const ModalBuyConfirm = ({ selectedScheduleId }) => {
               Đóng
             </button>
             <button
+              data-bs-dismiss="modal"
               type="button"
               className="btn btn-primary"
               onClick={handleBuyCourse}>
