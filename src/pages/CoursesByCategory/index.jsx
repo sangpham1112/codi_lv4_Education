@@ -9,9 +9,11 @@ import TabNavigate from "./components/TabNavigate";
 import BackButton from "../../components/BackButton";
 import Pagination from "../../components/Pagination";
 import usePaginate from "../../hooks/usePaginate";
+import { useEffect, useState } from "react";
 
 const CoursesByCategory = () => {
   const { id } = useParams();
+  const [courses, setCourses] = useState([]);
   const location = useLocation();
   const grade = location.search;
 
@@ -20,8 +22,15 @@ const CoursesByCategory = () => {
     queryFn: () => getCoursesByCategory(id, grade),
   });
 
+  useEffect(() => {
+    const availableCoures = data?.courses.filter(
+      (course) => course.status == 1
+    );
+    setCourses(availableCoures);
+  }, [data]);
+
   const { setCurrentPage, currentDataList, pageNumbers, currentPage } =
-    usePaginate(data?.courses);
+    usePaginate(courses);
 
   if (isLoading) {
     return <Loading />;

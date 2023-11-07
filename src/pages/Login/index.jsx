@@ -1,7 +1,7 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import { LoginUser, googleLogin } from "../../api/User";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { saveUserLogin } from "../../redux/users/userSlice";
 import { useNavigate } from "react-router-dom";
 

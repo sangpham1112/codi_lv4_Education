@@ -14,6 +14,8 @@ const CategoriesByEducation = () => {
     queryFn: () => getCategoriesByEducation(id),
   });
 
+  console.log(data?.categories);
+
   if (isLoading) {
     return <Loading />;
   }

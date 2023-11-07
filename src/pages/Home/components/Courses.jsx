@@ -6,14 +6,22 @@ import Carousel from "../../../components/Carousel";
 import { ImageLink } from "../../../utils/ImageLink";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Courses = () => {
+  const [courses, setCourses] = useState([]);
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["courses"],
     queryFn: getCourses,
   });
 
-  const courses = data?.courses;
+  useEffect(() => {
+    const availableCoures = data?.courses.filter(
+      (course) => course.status == 1
+    );
+    setCourses(availableCoures);
+  }, [data]);
+
   // console.log(courses);
 
   return (
