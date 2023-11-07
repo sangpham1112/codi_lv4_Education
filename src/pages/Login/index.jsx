@@ -58,7 +58,7 @@ const Login = () => {
           Đăng nhập
         </button>
         <div className="my-3 w-100">
-          <button className="btn btn-dark" onClick={() => handleGoogleLogin()}>
+          <button className="btn btn-dark" onClick={handleGoogleLogin}>
             <i className="bi bi-google me-2"></i> Đăng nhập với google
           </button>
         </div>
