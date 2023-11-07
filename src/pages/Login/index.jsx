@@ -63,7 +63,10 @@ const Login = () => {
           </button>
         </div>
         <span className="text-muted">
-          Chưa có tài khoản ? <a href="#">Vào đây</a>
+          Chưa có tài khoản ?
+          <a href="https://marathon-admin.netlify.app/" target="_blank">
+            Vào đây
+          </a>
         </span>
       </form>
     </div>
