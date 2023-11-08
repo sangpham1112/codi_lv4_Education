@@ -26,7 +26,7 @@ const Login = () => {
     onSuccess: async (tokenResponse) => {
       const result = await googleLogin(tokenResponse.access_token);
       dispatch(saveUserLogin(result.user));
-      navigate("/");
+      navigate(-1);
     },
   });
 
