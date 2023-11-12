@@ -6,6 +6,7 @@ import { ClientID } from "./utils/ClientID.js";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
+import { Toaster } from "react-hot-toast";
 import "./css/bootstrap.min.css";
 import "./css/style.css";
 import "swiper/css/pagination";
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
     <GoogleOAuthProvider clientId={ClientID}>
       <Provider store={store}>
+        <Toaster />
         <React.StrictMode>
           <App />
         </React.StrictMode>

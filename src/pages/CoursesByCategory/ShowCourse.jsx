@@ -9,6 +9,8 @@ import BackButton from "../../components/BackButton";
 import { getScheduleByCourse } from "../../api/Schedules";
 import SchedulesCourse from "./components/SchedulesCourse";
 import { useSelector } from "react-redux";
+import Comments from "./components/Comments";
+import PostComment from "./components/PostComment";
 
 const ShowCourse = () => {
   const { id } = useParams();
@@ -44,13 +46,21 @@ const ShowCourse = () => {
       <Banner title={course.summary} />
       <div className="row " style={{ height: "100%", minHeight: "100vh" }}>
         <div className="col-md-7">
-          <div className="card">
+          <div className="card mb-4">
             <div className="card-header fw-bold fs-4 bg-primary text-white py-3">
               {course.name}
             </div>
             <div className="card-body">
               <CourseDetail course={course} />
             </div>
+          </div>
+          <Comments comments={course.comments} />
+          <div className="mt-3">
+            {user?.name ? (
+              <PostComment courseId={id} user={user} />
+            ) : (
+              <span className="ms-4">Đăng nhập để đánh giá</span>
+            )}
           </div>
         </div>
         <div className="col-md-5">

@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 export const useCustomMutate = (key, fn) => {
   const queryClient = useQueryClient();
@@ -7,6 +8,7 @@ export const useCustomMutate = (key, fn) => {
     mutationFn: fn,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [key] });
+      toast.success("Thành công !");
     },
   });
   return mutation;

@@ -34,3 +34,11 @@ export const buyCourse = async (data) => {
     console.log(error);
   }
 };
+
+export const postComment = async (data) => {
+  try {
+    await httpRequest.post("/courses/comment", data);
+  } catch (error) {
+    console.log(error);
+  }
+};
