@@ -1,6 +1,22 @@
-import React from "react";
+import { useState } from "react";
+import { useCustomMutate } from "../../hooks/useCustomMutate";
+import { SendEmail } from "../../api/User";
+import { LoaderIcon } from "react-hot-toast";
 
 const Footer = () => {
+  const [email, setEamil] = useState("");
+  const sendEmailMutation = useCustomMutate("schedule_students", SendEmail);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email);
+    if (!email && email == "") {
+      alert("chưa nhập email");
+      return;
+    }
+    sendEmailMutation.mutate(email);
+  };
+
   return (
     <>
       <div
@@ -55,21 +71,24 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-            <div className="col-md-6">
-              <h4 className="text-white mb-3">Email</h4>
+            <form className="col-md-6" onSubmit={handleSubmit}>
+              <h4 className="text-white mb-3">Email liên lạc</h4>
               <div className="position-relative" style={{ maxWidth: 400 }}>
                 <input
                   className="form-control border-0 w-100 py-3 ps-4 pe-5"
                   type="email"
+                  value={email}
+                  onChange={(e) => setEamil(e.target.value)}
                   placeholder="Email của bạn"
                 />
                 <button
-                  type="button"
+                  type="submit"
+                  disabled={sendEmailMutation.isPending}
                   className="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">
-                  Gửi
+                  {sendEmailMutation.isPending ? <LoaderIcon /> : "Gửi"}
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

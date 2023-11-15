@@ -1,12 +1,13 @@
 import { ImageLink } from "../../../utils/ImageLink";
 import StarsRating from "./StarsRating";
+import NoAvatar from "/img/no-avatar.png";
 
 const Comments = ({ comments }) => {
   return (
     <>
       <h4>Nhận xét</h4>
       <hr />
-      <div className="row g-3">
+      <div className="row g-3" style={{ maxHeight: "450px", overflow: "auto" }}>
         {comments.map((item) => {
           return (
             <div className="col-md-12">
@@ -14,7 +15,9 @@ const Comments = ({ comments }) => {
                 <img
                   className="rounded-circle me-3 "
                   style={{ height: "3rem", width: "3rem" }}
-                  src={ImageLink + item.user.avatar}
+                  src={
+                    item.user.avatar ? ImageLink + item.user.avatar : NoAvatar
+                  }
                   alt={item.user.name}
                 />
                 <div className="card p-3 shadow-lg w-100">

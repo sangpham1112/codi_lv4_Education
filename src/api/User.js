@@ -27,3 +27,11 @@ export const Logout = async () => {
     return { error };
   }
 };
+
+export const SendEmail = async (data) => {
+  try {
+    await httpRequest.post("/student-schedules/contact/email", data);
+  } catch (error) {
+    console.log(error);
+  }
+};
