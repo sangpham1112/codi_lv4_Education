@@ -14,6 +14,9 @@ const SchedulesCourse = ({ schedules, price, user }) => {
   return (
     <>
       {schedules?.map((item, index) => {
+        if (item.user.status == 0) {
+          return null;
+        }
         return (
           <div className="card mb-3 shadow rounded" key={index}>
             <div className="row g-0 align-items-center">

@@ -21,6 +21,7 @@ const ShowCourse = () => {
   });
 
   const course = data?.course;
+  console.log(course);
 
   const {
     data: DataSchedule,
