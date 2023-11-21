@@ -72,6 +72,7 @@ const ShowCourse = () => {
               schedules={schedules}
               price={course?.price}
               user={user}
+              discount={course?.discount}
             />
           ) : (
             <span className="fw-bold">Hiện chưa có giảng viên</span>

@@ -3,7 +3,7 @@ import { ImageLink } from "../../../utils/ImageLink";
 import ModalBuyConfirm from "./ModalBuyConfirm";
 import formatPrice from "../../../utils/FormatPrice";
 
-const SchedulesCourse = ({ schedules, price, user }) => {
+const SchedulesCourse = ({ schedules, price, user, discount }) => {
   const [selectedScheduleId, setSelectedScheduleId] = useState(0);
 
   const isStudentInClass = (studentsInClass) => {
@@ -36,7 +36,16 @@ const SchedulesCourse = ({ schedules, price, user }) => {
                     <ul className="list-group list-group-flush fw-bold">
                       <li className="list-group-item">Lớp: {item.name}</li>
                       <li className="list-group-item">{item.schedule_time}</li>
-                      <li className="list-group-item">{formatPrice(price)}</li>
+                      <li className="list-group-item">
+                        {discount == 0
+                          ? formatPrice(price)
+                          : formatPrice(price * (1 - discount / 100))}
+                        {discount > 0 && (
+                          <span className="badge bg-danger ms-2">
+                            -{discount}%
+                          </span>
+                        )}
+                      </li>
                     </ul>
                     <div className="card-body">
                       <button
